@@ -23,7 +23,7 @@ public class EventDaoDbImpl implements EventDao {
 
     @Override
     public Page<Event> getEvents(Integer pageSize, Integer page) {
-        pageSize = pageSize == null ? Math.toIntExact(eventRepository.count()) : pageSize;
+                pageSize = pageSize == null || pageSize < 1 ? 10 : pageSize;
         page = page == null ? 1 : page;
         return eventRepository.findAll(PageRequest.of(page - 1, pageSize));
     }

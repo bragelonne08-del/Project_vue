@@ -1,5 +1,6 @@
 package se331.lab.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,8 +31,9 @@ public class Event {
     String date;
     String time;
     Boolean petAllowed;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     Organizer organizer;
     @ManyToMany(mappedBy = "eventHistory")
-    List<Participant> participants;
+    @Builder.Default
+    List<Participant> participants = new java.util.ArrayList<>();
 }

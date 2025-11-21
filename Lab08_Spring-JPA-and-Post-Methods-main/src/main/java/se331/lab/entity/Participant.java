@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.ArrayList;
 
 @Data
 @Builder
@@ -18,5 +19,6 @@ public class Participant {
     String name;
     String telNo;
     @ManyToMany
-    List<Event> eventHistory;
+    @Builder.Default
+    List<Event> eventHistory = new ArrayList<>();
 }

@@ -4,14 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.List;
-import java.util.ArrayList;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EventDTO {
+public class OrganizerOwnEventsDTO {
     Long id;
     String category;
     String title;
@@ -20,7 +20,5 @@ public class EventDTO {
     String date;
     String time;
     Boolean petAllowed;
-    EventOrganizerDTO organizer;
-    @Builder.Default
-    List<EventParticipantDTO> participants = new ArrayList<>();
+    List<Participant> participants;
 }
